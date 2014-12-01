@@ -1,0 +1,9 @@
+/test_*
+lib*.a
+*.lib
+Testing
+CTestTestfile.cmake
+Makefile
+CMakeCache.txt
+cmake_install.cmake
+CMakeFiles
