@@ -1,7 +1,9 @@
 About this allocator
 -----------------
 This is the Lockless Allocator, derived from http://locklessinc.com/
+
 Original sources located in ./src/
+
 Please, look at the terms of usage: http://locklessinc.com/products/
 
 What I did
@@ -10,6 +12,7 @@ Since original allocator was released under GPL-3, I slightly modified sources t
 * Clang >=3.4
 * GCC >=4.8 (including MinGW)
 * and VS 2013
+
 Both x86 (32bit) and x86-64 (64bit) builds should work without any problems for all listed compilers, but I wasn't tested all these possible variants.
 
 In addition, I added CMake support, so allocator builds smoothly in both Linux and Windows (no need for POSIX emulation/Automake anymore).
