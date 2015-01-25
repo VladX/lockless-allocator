@@ -31,25 +31,25 @@
 #define atomic_cmpxchg_bool(P, O, N) __sync_bool_compare_and_swap((P), (O), (N))
 #define atomic_access(V) (*(volatile typeof(V) *)&(V))
 
-static inline int bts(volatile void *mem, size_t offset)
+static inline unsigned char bts(volatile void *mem, size_t offset)
 {
 	unsigned char result;
 	asm (
-		"lock; bts %1, (%2); setc %0;"
-		: "=r" (result)
-		: "r" (offset), "r" (mem)
-		: "memory", "cc");
+		"lock; bts %2, %1; setc %0;"
+		: "=r" (result), "+m" (* (volatile long *) mem)
+		: "r" (offset)
+		: "cc");
 	return result;
 }
 
-static inline int btr(volatile void *mem, size_t offset)
+static inline unsigned char btr(volatile void *mem, size_t offset)
 {
 	unsigned char result;
 	asm (
-		"lock; btr %1, (%2); setc %0;"
-		: "=r" (result)
-		: "r" (offset), "r" (mem)
-		: "memory", "cc");
+		"lock; btr %2, %1; setc %0;"
+		: "=r" (result), "+m" (* (volatile long *) mem)
+		: "r" (offset)
+		: "cc");
 	return result;
 }
 
