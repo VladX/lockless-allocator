@@ -5861,7 +5861,7 @@ static void **ialloc_fallback(atls *tl, size_t n, size_t *sizes, void **chunks, 
 fail:
 	for (n = 0; n < i; n++)
 	{
-		PREFIX(free)(out[i]);
+		PREFIX(free)(out[n]);
 	}
 
 	if (!chunks) PREFIX(free)(out);
